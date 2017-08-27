@@ -33,6 +33,14 @@ case "$type" in
     wget "http://zverik.osm.rambler.ru/gps/files/extracts/$CONTINENT.tar.xz" -P ${data_dir}/osm-gpx
     ;;
 
+  skyhook)
+    echo "Skyhook OpenTIDE data.  See http://skyhook.carto.com/."
+    read -p "Enter a metro area: " AREA
+    read -p "Enter a date in the form YYYY-MM-DD: " DATE
+
+    wget "https://s3.amazonaws.com/skyhook-metro-extracts/metro_extracts/${AREA}_${DATE}.csv" -P ${data_dir}/skyhook
+    ;;
+
   tdrive)
     echo "Note: each zip file contains approximately one million points"
     read -p "Download how many zip files? (14 total) " NUM
